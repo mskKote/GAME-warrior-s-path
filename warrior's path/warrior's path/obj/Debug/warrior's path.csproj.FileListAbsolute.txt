@@ -1,0 +1,6 @@
+C:\Users\Vitaly\source\repos\warrior's path\warrior's path\bin\Debug\warrior's path.exe.config
+C:\Users\Vitaly\source\repos\warrior's path\warrior's path\bin\Debug\warrior's path.exe
+C:\Users\Vitaly\source\repos\warrior's path\warrior's path\bin\Debug\warrior's path.pdb
+C:\Users\Vitaly\source\repos\warrior's path\warrior's path\obj\Debug\warrior's path.csprojAssemblyReference.cache
+C:\Users\Vitaly\source\repos\warrior's path\warrior's path\obj\Debug\warrior's path.exe
+C:\Users\Vitaly\source\repos\warrior's path\warrior's path\obj\Debug\warrior's path.pdb
