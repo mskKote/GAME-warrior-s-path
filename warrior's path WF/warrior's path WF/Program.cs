@@ -13,8 +13,7 @@ namespace warrior_s_path_WF
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form1 form1 = new Form1();
-            Application.Run(form1);
+            Application.Run(new Form1());
         }
     }
 }

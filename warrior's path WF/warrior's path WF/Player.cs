@@ -7,105 +7,126 @@ using static warrior_s_path_WF.FormUsing;
 
 namespace warrior_s_path_WF
 {
-    //---------------Класс и методы для игрового процесса.
+    /// <summary>
+    /// Игровой процесс.
+    /// </summary>
     class Player
     {
-        public Player(Form1 form)
-        {
-            form1 = form;
-        }
-        protected static Form1 form1;
-
+        //----------------------------------Сюжет и описание локаций битвы.
         // Описание локаций.
         public readonly static string[] locations_descriptions = {
-                "\r\n*Узкая дорога между скал*\r\r\n\r\n" +
-                "Сквозь пелену падающих листьев,\r\r\n" +
-                "задыхаясь от ещё не осевшей пыли после землятрясения,\r\r\n" +
-                "в ущелье проникает солнечный свет.\r\r\n" +
-                "Часовой вступил на эту узкую дорогу.\r\r\n" +
-                "Отправьте кого-нибудь разобраться с ним.\r\r\n\r\n",
+                "\r\n*Узкая дорога между скал*\r\n\r\n" +
+                "Сквозь пелену падающих листьев,\r\n" +
+                "задыхаясь от ещё не осевшей пыли после землятрясения,\r\n" +
+                "в ущелье проникает солнечный свет.\r\n" +
+                "Часовой вступил на эту узкую дорогу.\r\n" +
+                "Отправьте кого-нибудь разобраться с ним.\r\n\r\n",
                 // 1 противник.
 
-                "\r\n*Кузнеца на самом краю деревни*\r\r\n\r\n" +
-                "Вы делаете глубокий вдох и ощущаете запах огня и дыма,\r\r\n" +
-                "сырого каменного пола и полированного металла - запах силы.\r\r\n" +
-                "Ваши воины воодушевлены,\r\r\n" +
-                "но и противник не дремлет...\r\r\n\r\n",
+                "\r\n*Кузнеца на самом краю деревни*\r\n\r\n" +
+                "Вы делаете глубокий вдох и ощущаете запах огня и дыма,\r\n" +
+                "сырого каменного пола и полированного металла - запах силы.\r\n" +
+                "Ваши воины воодушевлены,\r\n" +
+                "но и противник не дремлет...\r\n\r\n",
                 // 1 противник.
 
                 "\r\n*Улица*\r\n\r\n" +
-                "Некогда оживлённый центр торговли страдает от тоски\r\r\n" +
-                "и только хриплый стон ветхих конструкций\r\r\n" +
-                "и шелест бумажных стен не даёт тишине окончательно взять своё.\r" +
-                "\r\nВас замечают.\r\r\n\r\n",
+                "Некогда оживлённый центр торговли страдает от тоски\r\n" +
+                "и только хриплый стон ветхих конструкций\r\n" +
+                "и шелест бумажных стен не даёт тишине окончательно взять своё." +
+                "\r\nВас замечают.\r\n\r\n",
                 // 2 противника.
 
-                "\r\n*Ворота замка*\r\r\n\r\n" +
-                "Величие превратилось в руины. Одному богу известно,\r\r\n" +
-                "как красные ворота летней резиденции могли уцелеть.\r\r\n" +
-                "Как будто бы древняя магия не даёт им упать.\r\r\n" +
-                "Под ними вас ожидают стражи.\r\r\n\r\n",
+                "\r\n*Ворота замка*\r\n\r\n" +
+                "Величие превратилось в руины. Одному богу известно,\r\n" +
+                "как красные ворота летней резиденции могли уцелеть.\r\n" +
+                "Как будто бы древняя магия не даёт им упать.\r\n" +
+                "Под ними вас ожидают стражи.\r\n\r\n",
                 // 3 противника.
 
-                "\r\n*Замок, покои местного господина*\r\r\n\r\n" +
-                "Расставленная по фэншую комната на фоне общего хаоса\r\r\n" +
-                "выглядит до невозможности нелепо. Вы получили нужные документы!\r\r\n" +
-                "Осталось только уйти.\r\r\n" +
-                "Шум во дворе наводит волнение.\r\r\n" +
-                "Вас встречает элитная гвардия,\r\r\n" +
-                "имеющая своей задачей не допустить мародёров\r\r\n" +
-                "до ценнейших сведений.\r\r\n" +
-                "Выход только 1, убежать не получится. Придётся драться\r\r\n\r\n"
+                "\r\n*Замок, покои местного господина*\r\n\r\n" +
+                "Расставленная по фэншую комната на фоне общего хаоса\r\n" +
+                "выглядит до невозможности нелепо. Вы получили нужные документы!\r\n" +
+                "Осталось только уйти.\r\n" +
+                "Шум во дворе наводит волнение.\r\n" +
+                "Вас встречает элитная гвардия,\r\n" +
+                "имеющая своей задачей не допустить мародёров\r\n" +
+                "до ценнейших сведений.\r\n" +
+                "Выход только 1, убежать не получится. Придётся драться\r\n\r\n"
                 // 3 противника.
         };
         // Сюжетец.
         public readonly static string[] plot = {
-                "*В 8 веке нашей эры в Японии после страшного землятрясения*\r\r\n\r\n" +
-                "Глава клана самураев Камуто Хреновато узнаёт о том,\r\r\n" +
-                "что катастрофа потрепала замок влиятельного клана Тэрияки,\r\r\n" +
-                "славившегося своими богатствами.\r\r\n\r\n" +
-                "Однако эти богатства не трогают душу господина,\r\r\n" +
-                "поскольку он считает, что это грязные деньги.\r\r\n\r\n" +
-                "Если бы было возможно узнать наверняка, тогда клан Тэрияки\r\r\n" +
-                "больше не смог бы дальше конкурировать на политической арене Японии,\r\r\n" +
-                "что позволило бы вашему клану достичь пика своего могущества,\r\r\n" +
-                "а ваш господин вполне сможет претендовать на титул сёгуна.\r\r\n\r\n\r\n" +
-                "Господин дал вам 10 Ман поручил Вам собрать отряд\r\r\n" +
-                "и во чтобы то ни стало добыть документы и любые другие улики,\r\r\n" +
-                "подтверждающие предположения.\r\r\n\r\n",
+                "*В 8 веке нашей эры в Японии после страшного землятрясения*\r\n\r\n" +
+                "Глава клана Фудзивара узнаёт о том,\r\n" +
+                "что катастрофа потрепала замок другого\r\n" +
+                "влиятельного клана Минамото,\r\n" +
+                "славившегося своими богатствами.\r\n\r\n" +
+                "Однако эти богатства не трогают душу господина,\r\n" +
+                "поскольку он считает, что это грязные деньги.\r\n\r\n" +
+                "Если бы было возможно узнать наверняка, тогда клан Минамото\r\n" +
+                "больше не смог бы дальше конкурировать на политической арене Японии,\r\n" +
+                "что позволило бы вашему клану достичь пика своего могущества,\r\n" +
+                "а ваш господин вполне бы смог претендовать на титул сёгуна.\r\n\r\n\r\n" +
+                "Господин дал вам 10 Ман поручил Вам собрать отряд\r\n" +
+                "и во чтобы то ни стало добыть документы и любые другие улики,\r\n" +
+                "подтверждающие предположения.\r\n\r\n" +
 
-                "Вам предстоит выбрать лучших воинов и проникнуть в замок.\r\r\n",
+                "Вам предстоит выбрать лучших воинов и проникнуть в разрушенный замок.\r\n",
 
-                "*Ваш господин, придворный бухгалтер и вы собрались для осмотра кандидатов*\r\r\n",// Дальше делаю сам кастинг. По 3 случайных бойца. 
+                "*Ваш господин, придворный бухгалтер и вы собрались для осмотра кандидатов*\r\n",// Дальше делаю сам кастинг. По 3 случайных бойца. 
                 
-                "*Ястреб унёс депешу в Head Hunter Japan\r\r\n" +
-                "с щедрой предоплатой в размере 10 тысяч йен*\r\r\n" +
-                "Спустя 2 дня 10 лучших бойцов сёгуната прибыли к вашим воротам.\r\r\n",
+                "\r\n*Ястреб унёс депешу в Head Hunter Japan\r\n" +
+                "с щедрой предоплатой в размере 10 тысяч йен*\r\n" +
+                "Спустя 2 дня 10 лучших бойцов сёгуната прибыли к вашим воротам.\r\n",
                 // Показываю всю армию.
 
-                "\tГосподин кивнул вам вслед.\r\r\n" +
-                "[&]______________________________________________________________[&]\r\r\n\r\n",
+                "\tГосподин кивнул вам вслед.\r\n" +
+                "[&]______________________________________________________________[&]\r\n\r\n",
 
-                "Путь самурая - это смерть. Безмолвно цветёт сакура.\r\r\n\r\n",
+                "Путь самурая - это смерть. Безмолвно цветёт сакура.\r\n\r\n",
 
-                "Вы получили славу и имение, а ваш господин стал сёгуном.\r\r\n\r\n" +
-                "В годовщину победы вас пригласили на званный ужин. Пойти?\r\r\n"
+                "Вы получили славу и имение, а ваш господин стал сёгуном.\r\n\r\n" +
+                "В годовщину победы вас пригласили на званный ужин. Пойти?"
         };
+        // Для реплик приказов. Имя + реплика.
+        protected readonly string[] order_replicas = {
+            ", разберись с ним!",
+            ", не дай ему победить.",
+            ", я рассчитываю на тебя.",
+            ", порви его!",
+            ", я выбираю тебя!",
+            ", не подведи своего господина!",
+            ", аттакуй его.",
+            ", вступи в бой!"};
 
-        // И дальше статические счётчики для каждого текста.
+        //----------------------------------Счётчки
         public static int CounterLocation = 0;
         public static int CounterPlot = 0;
+        public static int CounterOrders = 0;
 
         private static int CounterRounds = 1;
-        // Скопированный метод для разговора, ибо жирно будет делать наследование ради 1 метода. Хотя на этот раз он public.
-        public static void MoonSpeak(string message, bool ln = true, int ticTac = 25)
+        /// <summary>
+        /// Использую статический класс,
+        /// позволяющий реализовывать данный функционал по добавлению в TextBox
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="ln"></param>
+        /// <param name="ticTac"></param>
+        public static void MoonSpeak(string message, bool ln = true, int ticTac = 0)
         {
-            FormUsing.Moonspeak(message);
-            Choice(new string[] { "\r\nПодтвердите" });
+            //Создаём подобие делегата.
+
+            //FormUsing.Moonspeak(message, ln);
         }
 
         private static Random random = new Random();
+        /// <summary>
+        /// Армия Human, с которой происходят взаимодействия.
+        /// </summary>
         private Human[] Army = new Human[10];
+
+        //----------------------------------Вывод персонажей в консоль.
         private void Show3Units(Human unit0, Human unit1 = null, Human unit2 = null)
         {
             if (unit0 == null && unit1 == null && unit2 == null)
@@ -119,10 +140,10 @@ namespace warrior_s_path_WF
                 // Вывод 3-х персонажей.
                 if (j != 7)
                 {
-                    visual = string.Concat("  ", unit0 != null ? unit0.Apperance[j] : "",
-                                           "  ", unit1 != null ? unit1.Apperance[j] : "",
-                                           "  ", unit2 != null ? unit2.Apperance[j] : "");
-                    MoonSpeak(visual + "\r\n", ticTac: 0);
+                    visual = string.Concat(" ", unit0 != null ? unit0.Apperance[j] : "",
+                                          "\t", unit1 != null ? unit1.Apperance[j] : "",
+                                          "\t", unit2 != null ? unit2.Apperance[j] + "\r" : "");
+                    MoonSpeak(visual, ticTac: 0);
                 }
                 // Вывод имён.
                 else
@@ -130,13 +151,12 @@ namespace warrior_s_path_WF
                     string nameArr = "              ";
 
                     visual = string.Concat(
-                          "\r   ", unit0 != null ? unit0.Name + nameArr.Substring(2 + unit0.Name.Length) : "", "  ",
+                         "\r    ", unit0 != null ? unit0.Name + nameArr.Substring(2 + unit0.Name.Length) : "", "  ",
                              "  ", unit1 != null ? unit1.Name + nameArr.Substring(2 + unit1.Name.Length) : "", "  ",
-                             "  ", unit2 != null ? unit2.Name + nameArr.Substring(2 + unit2.Name.Length) : "");
+                             "  ", unit2 != null ? unit2.Name + nameArr.Substring(2 + unit2.Name.Length) + "\r\n" : "");
                     MoonSpeak(visual, ticTac: 15);
                 }
             }
-            MoonSpeak("\r\n");
         }
         public void ShowArmy()
         {
@@ -147,6 +167,7 @@ namespace warrior_s_path_WF
             }
             Show3Units(Army[9]);
         }
+        //----------------------------------Создание армии случайно.
         private Human RndUnit(bool isEnemy = false)
         {
             switch (random.NextDouble())
@@ -168,56 +189,71 @@ namespace warrior_s_path_WF
             }
         }
 
+        //----------------------------------Cоздание армии по воле игрока.
         protected static double money = 10.0;
         public void ArmyCasting()
         {
             for (int i = 0; i < 10 && money >= 1; i++)
             {
-                MoonSpeak($"Количество бойцов: {i}\r\r\n", ticTac: 0);
+                MoonSpeak($"\r\nКоличество бойцов: {i}\r", ticTac: 0);
 
                 Human[] buffUnits = { RndUnit(), RndUnit(), RndUnit() };
                 Show3Units(buffUnits[0], buffUnits[1], buffUnits[2]);
 
-                MoonSpeak($"\r\nБаланс: {money} тысяч иен.\r\n", ticTac: 0);
-                MoonSpeak("Кандидаты: \r\n", ticTac: 0);
+                MoonSpeak($"Баланс: {money} тысяч иен.", ticTac: 0);
+                MoonSpeak("\rКандидаты: \r\n", ticTac: 0);
 
                 Army[i] = buffUnits[Choice(new string[] {
-                    $"{(buffUnits[0] as Fighter).GetCharacterDescription()} Cтоимость: {buffUnits[0].Price} тысяч иен.\r\r\n",
-                    $"{(buffUnits[1] as Fighter).GetCharacterDescription()} Cтоимость: {buffUnits[1].Price} тысяч иен.\r\r\n",
-                    $"{(buffUnits[2] as Fighter).GetCharacterDescription()} Cтоимость: {buffUnits[2].Price} тысяч иен.\r\r\n"
+                    $"{(buffUnits[0] as Fighter).GetCharacterDescription()} Cтоимость: {buffUnits[0].Price} тысяч иен.\r",
+                    $"{(buffUnits[1] as Fighter).GetCharacterDescription()} Cтоимость: {buffUnits[1].Price} тысяч иен.\r",
+                    $"{(buffUnits[2] as Fighter).GetCharacterDescription()} Cтоимость: {buffUnits[2].Price} тысяч иен.\r"
                 })];
 
                 if (Army[i].Price > money)
                 {
                     i--;
-                    MoonSpeak("Вы не можете нанять его.\r\n" +
-                              "У вас нет таких денег, а банки не выдают кредиты на секретные операции.\r\n" +
-                              "Увидев, как неумело их потенциальный командир распоряжается деньгами,\r\nвоины сбежали в ужасе.\r\n\r\n", ticTac: 25);
+                    MoonSpeak("\rВы не можете нанять его.\r" +
+                              "У вас нет таких денег, а банки не выдают кредиты на секретные операции.\r" +
+                              "Увидев, как неумело их потенциальный командир распоряжается деньгами,\rвоины сбежали в ужасе.\r", ticTac: 25);
                 }
                 else money -= Army[i].Price;
 
                 if (money > 0 && money < 1.0)
                 {
-                    MoonSpeak("Вы наняли армию и у вас осталось ещё немного денег.\r\nВаша ЗП увеличилась!\r\n\r\n", ticTac: 30);
+                    MoonSpeak("\rВы наняли армию и у вас осталось ещё немного денег.\rВаша ЗП увеличилась!\r\n\n", ticTac: 30);
                 }
             }
         }
+        /// <summary>
+        /// Главный метод для выбора чего бы то ни было.
+        /// </summary>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public static int Choice(string[] options)
         {
-            switch (options.Length)
-            {
-                case 2:
-                    Buttons[7].Visible = true;
-                    Buttons[8].Visible = true;
+            int shift = 1, choiceNum = -1;
 
-                    break;
-                default:
-                    break;
+            MoonSpeak("");
+            for (int i = 0; i < options.Length; i++)
+            {
+                if (options[i] == "")
+                {
+                    shift--;
+                }
+                else MoonSpeak($"{i + shift}] {options[i]}", ticTac: 0);
             }
-            int choiceNum = -1;
-            return choiceNum + 1;
+
+
+            if (options.Length >= 10 && choiceNum == 1)
+            {
+                //choiceNum = Choice(new string[] { options[0], options[options.Length - 1] }) + 1 == 2 ? 10 : 1;
+            }
+
+            FormUsing.Choice(options);
+            return choiceNum - 1;
         }
 
+        //----------------------------------Проверяет количество живых и жив ли хоть кто-нибудь.
         public int AliveAmount()
         {
             int amount = 0;
@@ -235,6 +271,12 @@ namespace warrior_s_path_WF
             return AliveAmount() != 0;
         }
 
+        //----------------------------------Методы, необходимые для битвы.
+        /// <summary>
+        /// Возвращает случайного живого персонажа из какой-либо команды.
+        /// </summary>
+        /// <param name="team"></param>
+        /// <returns></returns>
         private static Human RndAliveUnit(Player team)
         {
             int buffNum;
@@ -246,10 +288,18 @@ namespace warrior_s_path_WF
 
             return team.Army[buffNum];
         }
+        /// <summary>
+        /// Осуществляется выбор персонажа.
+        /// </summary>
+        /// <returns></returns>
         private Human ChoicedUnit()
         {
+            /*В этом методе соблюдается порядок вывода.
+                Сперва Fighter --> Ninja --> Samurai
+                Затем выбор и раздача приказа.
+             */
             string AliveUnitsDesc = "";
-            MoonSpeak("Выберите воина, который пойдет в бой", true, 0);
+            MoonSpeak("Выберите воина, который пойдет в бой\r", true, 0);
             Thread.Sleep(100);
 
             int[] memberOrder = new int[Army.Length];
@@ -261,12 +311,12 @@ namespace warrior_s_path_WF
                 if (Army[i] != null && Army[i].IsAlive() && Army[i].ToString().Split('.')[2] == "Fighter")
                 {
                     memberOrder[memberCounter++] = i;
-                    AliveUnitsDesc += (Army[i] as Fighter).GetCharacterDescription(false) + "^";
+                    AliveUnitsDesc += (Army[i] as Fighter).GetCharacterDescription(false) + "\r\n^";
                 }
             }
             AliveUnitsDesc = AliveUnitsDesc == "" ? " " : AliveUnitsDesc;
             AliveUnitsDesc = AliveUnitsDesc.Remove(AliveUnitsDesc.Length - 1);
-            AliveUnitsDesc += "\r\n\r\nНиндзи:^";
+            AliveUnitsDesc += "\r\nНиндзи:\r^";
             // Затем Ninja
 
             for (int i = 0; i < Army.Length; i++)
@@ -274,32 +324,43 @@ namespace warrior_s_path_WF
                 if (Army[i] != null && Army[i].IsAlive() && Army[i].ToString().Split('.')[2] == "Ninja")
                 {
                     memberOrder[memberCounter++] = i;
-                    AliveUnitsDesc += (Army[i] as Fighter).GetCharacterDescription(false) + "^";
+                    AliveUnitsDesc += (Army[i] as Fighter).GetCharacterDescription(false) + "\r\n^";
                 }
 
             }
 
             AliveUnitsDesc = AliveUnitsDesc.Remove(AliveUnitsDesc.Length - 1);
-            AliveUnitsDesc += "\r\n\r\nСамураи:^";
+            AliveUnitsDesc += "\r\nСамураи:\r^";
 
             for (int i = 0; i < Army.Length; i++)
             {
                 if (Army[i] != null && Army[i].IsAlive() && Army[i].ToString().Split('.')[2] == "Samurai")
                 {
                     memberOrder[memberCounter++] = i;
-                    AliveUnitsDesc += (Army[i] as Fighter).GetCharacterDescription(false) + "^";
+                    AliveUnitsDesc += (Army[i] as Fighter).GetCharacterDescription(false) + "\r\n^";
                 }
             }
-            // И завершает эту фиерию Samurais
+            // И завершает эту фиерию Samurai
             AliveUnitsDesc = AliveUnitsDesc.Remove(AliveUnitsDesc.Length - 1);
 
-            MoonSpeak("\r\nВоители:");
+            MoonSpeak("\r\nВоители:\r");
+            
+            int choice = Choice(AliveUnitsDesc.Split('^'));
 
-            return Army[memberOrder[Choice(AliveUnitsDesc.Split('^'))]];
+            // Здесь мы отдаём приказ.
+            MoonSpeak("\r"
+                + Army[memberOrder[choice]].Name
+                + order_replicas[CounterOrders % order_replicas.Length]);
+
+            return Army[memberOrder[choice]];
         }
 
-        // Отвечает за то, КТО и КОГО бьёт.
-        // Передаём в него армии.
+        /// <summary>
+        /// Отвечает за то, КТО и КОГО бьёт.
+        /// Передаём в него армии.
+        /// </summary>
+        /// <param name="defender"></param>
+        /// <param name="attaker"></param>
         public static void BattleScenario(Player defender, Player attaker)
         {
             // Проверяем, кто есть кто.
@@ -324,7 +385,16 @@ namespace warrior_s_path_WF
             }
         }
 
-        // Запуситили битву и установили очередь.
+        /// <summary>
+        /// Здесь запускается битва, где должны умереть
+        /// Либо все персонажи user, либо deads компьютера.
+        /// Очерёдность регулируется переменной queue.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="computer"></param>
+        /// <param name="deads"></param>
+        /// <param name="queue"></param>
+        /// <returns></returns>
         public static int BattleCircle(Player user, Player computer, int deads, ref int queue)
         {
             if (deads <= 0)
@@ -338,19 +408,13 @@ namespace warrior_s_path_WF
             for (; prevousAlive - computer.AliveAmount() != deads; queue++)
             {
                 // Атака по очереди, пока количество мертвецов не заставит противника отступить или вас проиграть.
-                LabelRound.Text = ("Round " + (CounterRounds < 10 ? "00" + CounterRounds.ToString() : "")
-            + (CounterRounds >= 10 && CounterRounds < 100 ? "0" + CounterRounds.ToString() : "")
-                                   + (CounterRounds >= 100 ? "" + CounterRounds.ToString() : ""));
+                MoonSpeak("Раунд: " + CounterRounds + "\r");
+                FormUsing.NextRound();
 
-                if (CounterRounds % 30 == 0 && Choice(new string[] { "Ускорить вывод", "Оставить как есть" }) == 0)
-                {
-                     Human.TextSpeedChanger();
-                }
-                
                 CounterRounds++;
                 BattleScenario(queue % 2 == 0 ? user : computer, // defender
                                queue % 2 == 0 ? computer : user);// attacker
-                //  А живы ли мы сами?
+                // А живы ли мы сами?
                 if (!user.IsSmbAlive())
                 {
                     // Возращаем ещё более секретный код, который говорит, что мы проиграли.
@@ -358,11 +422,14 @@ namespace warrior_s_path_WF
                 }
             }
 
-            MoonSpeak("*Противник несёт потери и отступает*", ticTac: 15);
+            MoonSpeak("*Противник несёт потери и отступает*\r", ticTac: 15);
             // Возращаем секретный код, который говорит, что всё ок.
             return 1;
         }
-
+        /// <summary>
+        /// Производит повтор.
+        /// Возвращает всё в начальное положение.
+        /// </summary>
         public static void Restart()
         {
             CounterLocation = 0;
