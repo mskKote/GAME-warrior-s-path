@@ -8,18 +8,19 @@ namespace warrior_s_path.Units
     class Fighter : Human
     {
         /// <summary>
-        /// Конструктор, в котором задаются все параметры о персонаже.
+        /// Конструктор, в котором задаются все параметры о персонаже
+        /// минимум рандома и его максимум на 1 характеристику.
         /// </summary>
-        /// <param name="healthyMin"></param>
-        /// <param name="healthyMax"></param>
-        /// <param name="damageMin"></param>
-        /// <param name="damageMax"></param>
-        /// <param name="guardMin"></param>
-        /// <param name="guardMax"></param>
-        /// <param name="evadeMin"></param>
-        /// <param name="evadeMax"></param>
-        /// <param name="price"></param>
-        /// <param name="isEnemy"></param>
+        /// <param name="healthyMin">Здоровье</param>
+        /// <param name="healthyMax">Здоровье</param>
+        /// <param name="damageMin">Урон</param>
+        /// <param name="damageMax">Урон</param>
+        /// <param name="guardMin">Щит</param>
+        /// <param name="guardMax">Щит</param>
+        /// <param name="evadeMin">Уклонение</param>
+        /// <param name="evadeMax">Уклонение</param>
+        /// <param name="price">Стоимость юнита</param>
+        /// <param name="isEnemy">враждебность</param>
         public Fighter(int healthyMin = 50, int healthyMax = 70, /*Здоровье*/
                        int damageMin = 10, int damageMax = 10,  /*Урон*/
                        int guardMin = 3, int guardMax = 6,     /*Щит*/
@@ -49,8 +50,8 @@ namespace warrior_s_path.Units
                 "    | RIP||   ",
                 "    |''''||   ",
                 "____|''''||__ ",
-                "    // // //     ",
-                "   // // //      "};
+                "    //////    ",
+                "   //////     "};
         }
 
         //----------------------------------Параметры персонажа.
@@ -86,7 +87,7 @@ namespace warrior_s_path.Units
         /// <returns></returns>
         public bool Chance(double chance)
         {
-            return random.Next(0, 100) < chance;
+            return random.Next(0, 10) < chance;
         }
 
         //---------------------------------- Реплики персонажей на все случаи жизни.
@@ -179,6 +180,15 @@ namespace warrior_s_path.Units
                 if (enemy is Samurai &&
                     Chance((enemy as Samurai).Reliation))
                 {
+                    ShowMob(new string[] {
+                        "\n        \\\\     ",
+                        @"   /++] \\    ",
+                        @"  // />}'\\__ ",
+                        @"  {[][]}_/\]  ",
+                        @" *[][]'    \' ",
+                        @" //  _\\      ",
+                        "[.  [.        \n"
+                    });
                     MoonSpeak("||_________" + ((enemy as Fighter).isEnemy ?
                         "Противник контратаковал!" :
                        $"{enemy.Name} контратаковал!"), ticTac: textSpeed);
@@ -192,7 +202,7 @@ namespace warrior_s_path.Units
                               $"{this.ToString().Split('.')[2]} {(isEnemy ? "" : Name + " ")}атаковал " +
                               $"{(isEnemy ? Name : "противника")} и нанёс " +
                               $"{(dmg > 0? dmg : 0)} урона.\n" +
-                              $"Оставшееся здоровье: {enemy.Healthy}", ticTac: textSpeed);
+                              $"Оставшееся здоровье: {enemy.Healthy - (dmg > 0 ? dmg : 0)}/{(enemy as Fighter).maxHealthy} (Щит: {(enemy as Fighter).Guard - 1})", ticTac: textSpeed);
                     this.BattleCry();
                     MoonSpeak("");
 

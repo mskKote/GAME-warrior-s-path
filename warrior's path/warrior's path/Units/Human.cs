@@ -133,7 +133,7 @@ namespace warrior_s_path.Units
         }
 
         //----------------------------------Взаимодействие с консолью [Требуется по заданию]
-        protected static int textSpeed = 20;
+        protected static int textSpeed = 0;
         /// <summary>
         /// Позволяет ускорять вывод текста.
         /// </summary>

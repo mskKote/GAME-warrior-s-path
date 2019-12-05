@@ -274,7 +274,7 @@ namespace warrior_s_path
 
             if (options.Length >= 10 && choiceNum == 1)
             {
-                choiceNum = Choice(new string[] {options[0], options[9]}) + 1 == 2 ? 10 : 1;
+                choiceNum = Choice(new string[] {options[0], options[options.Length - 1] }) + 1 == 2 ? 10 : 1;
             }
 
             Console.WriteLine();
