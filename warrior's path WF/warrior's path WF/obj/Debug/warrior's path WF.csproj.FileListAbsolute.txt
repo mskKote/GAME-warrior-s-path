@@ -1,0 +1,12 @@
+C:\Users\Vitaly\source\repos\warrior's path WF\warrior's path WF\bin\Debug\warrior's path WF.exe.config
+C:\Users\Vitaly\source\repos\warrior's path WF\warrior's path WF\bin\Debug\warrior's path WF.exe
+C:\Users\Vitaly\source\repos\warrior's path WF\warrior's path WF\bin\Debug\warrior's path WF.pdb
+C:\Users\Vitaly\source\repos\warrior's path WF\warrior's path WF\obj\Debug\warrior_s_path_WF.Properties.Resources.resources
+C:\Users\Vitaly\source\repos\warrior's path WF\warrior's path WF\obj\Debug\warrior's path WF.csproj.GenerateResource.cache
+C:\Users\Vitaly\source\repos\warrior's path WF\warrior's path WF\obj\Debug\warrior's path WF.exe
+C:\Users\Vitaly\source\repos\warrior's path WF\warrior's path WF\obj\Debug\warrior's path WF.pdb
+C:\Users\Vitaly\source\repos\warrior's path WF\warrior's path WF\bin\Debug\ru-RU\warrior's path WF.resources.dll
+C:\Users\Vitaly\source\repos\warrior's path WF\warrior's path WF\obj\Debug\ru-RU\warrior's path WF.resources.dll
+C:\Users\Vitaly\source\repos\warrior's path WF\warrior's path WF\obj\Debug\warrior's path WF.csprojAssemblyReference.cache
+C:\Users\Vitaly\source\repos\warrior's path WF\warrior's path WF\obj\Debug\warrior_s_path_WF.Form1.resources
+C:\Users\Vitaly\source\repos\warrior's path WF\warrior's path WF\obj\Debug\warrior_s_path_WF.Form1.ru-RU.resources
